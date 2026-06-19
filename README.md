@@ -9,10 +9,7 @@ built with [BubbleTea](https://github.com/charmbracelet/bubbletea) and [godbus](
 
 ## Showcase
 
-<p align="center">
-  <video src="./assets/showcase.mp4" autoplay loop muted playsinline width="100%" style="max-width: 800px;">
-  </video>
-</p>
+![TUI showcase](./assets/showcase.gif)
 
 ---
 
