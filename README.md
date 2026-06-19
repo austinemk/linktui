@@ -7,9 +7,12 @@ built with [BubbleTea](https://github.com/charmbracelet/bubbletea) and [godbus](
 
 ---
 
-## Demo
+## Showcase
 
-![TUI Demo](./assets/demo.gif)
+<p align="center">
+  <video src="./assets/showcase.mp4" autoplay loop muted playsinline width="100%" style="max-width: 800px;">
+  </video>
+</p>
 
 ---
 
