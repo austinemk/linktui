@@ -18,14 +18,16 @@ const (
 )
 
 type AppModel struct {
-	ActiveTab  Tab
-	WifiView   wifi.Model
-	BtView     bluetooth.Model
-	VpnView    vpn.Model
-	LogMessage string
-	SizeError  string
-	LoadedTabs map[Tab]bool
-	BusReady   bool
+	ActiveTab      Tab
+	WifiView       wifi.Model
+	BtView         bluetooth.Model
+	VpnView        vpn.Model
+	LogMessage     string
+	SizeError      string
+	LoadedTabs     map[Tab]bool
+	BusReady       bool
+	TerminalWidth  int
+	TerminalHeight int
 }
 
 func (m AppModel) Init() tea.Cmd {

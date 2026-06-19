@@ -8,9 +8,9 @@ import (
 
 // RenderHeader draws the main app banner and menu selections
 func RenderHeader(activeTab int) string {
-	figure := `  |    _ _|   \ |  |  / 
-  |      |   .  |  . <  
- ____| ___| _|\_| _|\_\ `
+	figure := `░█░░░▀█▀░█▀█░█░█░▀█▀░█░█░▀█▀
+░█░░░░█░░█░█░█▀▄░░█░░█░█░░█░
+░▀▀▀░▀▀▀░▀░▀░▀░▀░░▀░░▀▀▀░▀▀▀`
 
 	title := Styles.Title.Render(figure)
 
@@ -51,7 +51,7 @@ func RenderHeader(activeTab int) string {
 
 func DividerBorder() string {
 	if ColorDivider != "" {
-		return lipgloss.NewStyle().Foreground(lipgloss.Color(ColorDivider)).Render(strings.Repeat("-", WindowWidth-2))
+		return lipgloss.NewStyle().Foreground(lipgloss.Color(ColorDivider)).Render(strings.Repeat("─", WindowWidth-4))
 	}
 	return ""
 }

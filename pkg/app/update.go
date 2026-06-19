@@ -10,15 +10,17 @@ import (
 	tea "charm.land/bubbletea/v2"
 )
 
-// Notice the switch to *AppModel so state mutations stick!
 func (m *AppModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
 	var cmds []tea.Cmd
 
 	if windowMsg, ok := msg.(tea.WindowSizeMsg); ok {
+		m.TerminalWidth = windowMsg.Width
+		m.TerminalHeight = windowMsg.Height
+
 		if config.WindowWidth < 70 || config.WindowHeight < 25 {
 			m.SizeError = fmt.Sprintf("⚠️  Configuration Error!\n\n  Configured sizes too small...\n  Absolute Minimum: 70x25")
-			return m, nil // Returning pointer is fine here, Bubble Tea handles it
+			return m, nil
 		}
 		if config.WindowWidth > windowMsg.Width || config.WindowHeight > windowMsg.Height {
 			m.SizeError = fmt.Sprintf("⚠️  Terminal screen too small!\n\n  Please resize your terminal window.")

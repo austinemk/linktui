@@ -10,7 +10,16 @@ import (
 func (m *AppModel) View() tea.View {
 	if m.SizeError != "" {
 		boxStyle := lipgloss.NewStyle().Border(lipgloss.DoubleBorder()).BorderForeground(lipgloss.Color("#EF4444")).Padding(2, 4)
-		v := tea.NewView(boxStyle.Render(m.SizeError))
+
+		// Center the error message
+		errorLayout := boxStyle.Render(m.SizeError)
+		centeredError := lipgloss.NewStyle().
+			Width(m.TerminalWidth).
+			Height(m.TerminalHeight).
+			Align(lipgloss.Center, lipgloss.Center).
+			Render(errorLayout)
+
+		v := tea.NewView(centeredError)
 		v.AltScreen = true
 		return v
 	}
@@ -42,7 +51,15 @@ func (m *AppModel) View() tea.View {
 
 	mainLayout := lipgloss.JoinVertical(lipgloss.Left, header, body, logView)
 	mainLayout = config.Styles.Container.Render(mainLayout)
-	v := tea.NewView(mainLayout)
+
+	// full-window style to force center alignment
+	centeredLayout := lipgloss.NewStyle().
+		Width(m.TerminalWidth).
+		Height(m.TerminalHeight).
+		Align(lipgloss.Center, lipgloss.Center).
+		Render(mainLayout)
+
+	v := tea.NewView(centeredLayout)
 	v.AltScreen = true
 	return v
 }
